@@ -1,0 +1,26 @@
+.course-player {
+  display: flex;
+  flex-direction: row;
+}
+
+.video-section {
+  flex: 3;
+  padding: 20px;
+}
+
+.course-content {
+  flex: 1;
+  max-width: 300px;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100vh;
+  border-left: 1px solid #ddd;
+}
+
+.video-player {
+  margin-bottom: 20px;
+}
+
+.tabs {
+  margin-top: 20px;
+}

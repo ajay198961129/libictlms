@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+
+.course-wrapper {
+  margin: 40px;
+}
+
+.course-wrapper h1 {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.course-card {
+  margin: 10px;
+  width: 300px;
+  overflow: hidden;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.course-card img {
+  margin-bottom: 0px;
+  height: 200px;
+  width: 100%;
+}
+
+.course-info {
+  background-color: #4c7ce3;
+  color: #fff;
+  padding: 19px 13px 20px 13px;
+  position: relative;
+  top: 10;
+  transition-duration: 1s;
+  margin-top: -4px;
+}
+
+.course-info h2 {
+  margin: 0px;
+}
+
+.course-footer a {
+  border: 1px solid #ff3d03;
+  color: #ff3d03;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px 20px;
+  transition-duration: 0.5s;
+}
+
+.course-footer a:hover {
+  background-color: #ff3d03;
+  color: #fff;
+}
+
+.course-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
