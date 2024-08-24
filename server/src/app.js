@@ -10,7 +10,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-origin:{"https://libictlms-api.vercel.app"},
+origin:{"https://libictlms-frontend.vercel.app/"},
 methods:["POST","GET"],
 credentials:true
 }));
