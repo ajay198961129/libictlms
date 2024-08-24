@@ -1,9 +1,17 @@
-import React from "react";
+import React { useRef } from "react";
 
 export default function TopBar() {
+   const listItems = useRef([]);
+  const toggleMenu = () => {
+    const navigation = document.querySelector('.admin-navigation');
+    const main = document.querySelector('.admin-main');
+
+    navigation.classList.toggle('active');
+    main.classList.toggle('active');
+  };
   return (
     <div className="admin-topbar">
-      <div className="admin-toggle">
+      <div className="admin-toggle" onClick={toggleMenu}>
         <ion-icon name="menu-outline"></ion-icon>
       </div>
 
