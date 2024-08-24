@@ -11,7 +11,14 @@ connectDB();
 
 app.use(cors({
   origin: ["https://www.libict.org"],
-  methods: ["POST", "GET"]
+  methods: ["POST", "GET"],
+  credentials: true
+}));
+
+app.options('*', cors({
+  origin: ["https://www.libict.org"],
+  methods: ["POST", "GET"],
+  credentials: true
 }));
 
 
