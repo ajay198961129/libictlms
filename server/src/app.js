@@ -9,7 +9,17 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://www.libict.org"],
+    methods:["POST","GET"],
+    credentials:true
+  }
+));
+
+app.get("/",(req,res)=>{
+  res.json("hello")
+});
 
 // Middleware
 app.use(express.json());
