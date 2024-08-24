@@ -9,7 +9,11 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-app.use(cors());
+app.use(cors({
+origin:{"https://libictlms-api.vercel.app"},
+methods:["POST","GET"],
+credentials:true
+}));
 
 // Middleware
 app.use(express.json());
