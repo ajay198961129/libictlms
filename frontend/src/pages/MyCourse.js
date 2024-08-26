@@ -4,6 +4,7 @@ import { academyId, userApiUrl } from "../api/config";
 import axios from "axios";
 import MyCoursesWidget from "../components/MyCoursesWidget";
 import Loader from "../components/Loader";
+import Error from "../components/error";
 
 function MyCourse() {
   const [load, setLoad] = useState(false);
@@ -13,14 +14,12 @@ function MyCourse() {
 
     try {
       const userId = localStorage.getItem("userId");
-
-      let sendData = {
-        academyId: academyId,
-        userId: userId,
-      };
-      const response = await axios.post(`${userApiUrl}/my-course/`, sendData);
+      const response = await axios.get(
+        `${userApiUrl}/my-course/${academyId}/${userId}`
+      );
       setMyCourseData(response.data);
       setLoad(true);
+      console.log(response);
     } catch (error) {
       console.log(error);
       setLoad(false);
@@ -36,9 +35,13 @@ function MyCourse() {
       {load ? (
         <>
           <h2>My Courses</h2>
-          {myCourseData.map((myCourse, index) => (
-            <MyCoursesWidget key={index} data={myCourse} />
-          ))}
+          {myCourseData.length == 0 ? (
+            <Error error="No Courses Found!" />
+          ) : (
+            myCourseData.map((myCourse, index) => (
+              <MyCoursesWidget key={index} data={myCourse} />
+            ))
+          )}
         </>
       ) : (
         <Loader />

@@ -9,7 +9,6 @@ import Loader from "../components/Loader";
 function CourseDetails() {
   const { courseId } = useParams();
   const [load, setLoad] = useState(false);
-  const [btnLoad, setBtnLoad] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
   const [courseDetials, setCourseDetials] = useState([]);
   const [contentData, setContentData] = useState([]);
@@ -69,7 +68,8 @@ function CourseDetails() {
     if (userId != null) {
       try {
         const response = await axios.post(`${userApiUrl}/my-course`, sendData);
-        setBtnLoad(true);
+        console.log(response);
+
         if (userId != null) {
           getPurchased();
         }
@@ -84,7 +84,7 @@ function CourseDetails() {
 
   useEffect(() => {
     fetchCourses();
-  }, []);
+  }, [courseId]);
 
   return (
     <>
@@ -98,7 +98,10 @@ function CourseDetails() {
                 <h1>{courseDetials.title}</h1>
                 <p>{courseDetials.description}</p>
                 {isPurchased ? (
-                  <Link className="btn-enroll btn-purchased">
+                  <Link
+                    className="btn-enroll btn-purchased"
+                    to={`/course-player/${courseId}`}
+                  >
                     Continue Your Course
                   </Link>
                 ) : (

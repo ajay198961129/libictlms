@@ -5,7 +5,6 @@ import Loader from "../components/Loader";
 import axios from "axios";
 import { academyId, baseUrl, userApiUrl } from "../api/config";
 import { useParams } from "react-router-dom";
-import video from "../upload/1724345852682.mp4";
 import {
   Accordion,
   AccordionSummary,
@@ -13,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { MdExpandMore, MdPlayCircle } from "react-icons/md";
+import Error from "../components/error";
 
 function CoursePlayer() {
   const [load, setLoad] = useState(false);
@@ -88,7 +88,7 @@ function CoursePlayer() {
   }, []);
   return load ? (
     currentVideoData == null ? (
-      <h3>Data Not Found</h3>
+      <Error error="No Content Found!" />
     ) : (
       <div className="course-player">
         <div className="video-section">

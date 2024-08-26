@@ -21,7 +21,7 @@ router.post("/signup", registerUser);
 router.post("/login", authUser);
 router.get("/profile", protect, getUserProfile);
 router.post("/courses", getCourses);
-router.post("/my-course", getMyCourse);
+router.get("/my-course/:academyId/:userId", getMyCourse);
 router.get("/my-purchased/:academyId/:userId/:courseId", getPurchased);
 router.post("/my-course", addMyCourse);
 router.get("/course/:academyId/:courseId", getCourseDetails);

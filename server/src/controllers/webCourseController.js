@@ -57,12 +57,12 @@ const getOnlyContent = async (req, res) => {
 };
 
 const getMyCourse = async (req, res) => {
-  const { academyId, userId } = req.body;
+  const { academyId, userId } = req.params;
   const myCourse = await MyCourse.find({ academyId: academyId, userId: userId })
     .populate({
-      path: "courseId", // Populate the 'books' field in Author
+      path: "courseId",
       populate: {
-        path: "category", // In 'books', also populate 'publisher'
+        path: "category",
       },
     })
     .exec();
