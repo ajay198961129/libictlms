@@ -15,10 +15,13 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/404";
 import Dashboard from "./admin/pages/Dashboard";
 import AdminLayout from "./layout/adminLayout";
+import LoginPage from "./admin/pages/Login";
 
 function App() {
   const userId = localStorage.getItem("userId");
+  const adminUserId = localStorage.getItem("adminUserId");
   const [isLogin, setIsLogin] = useState(false);
+  const [isAdminLogin, setAdminLogin] = useState(false);
 
   const checkLogin = () => {
     if (userId != null) {
@@ -28,9 +31,18 @@ function App() {
     }
   };
 
+  const checkAdminLogin = () => {
+    if (userId != null) {
+      setAdminLogin(true);
+    } else {
+      setAdminLogin(false);
+    }
+  };
+
   useEffect(() => {
     checkLogin();
-  }, [userId]);
+    checkAdminLogin();
+  }, [userId, adminUserId]);
 
   function WebsiteLayout({ children }) {
     return (
@@ -143,19 +155,28 @@ function App() {
         <Route
           path="/admin"
           element={
-            <AdminLayout>
-              <Dashboard />
-            </AdminLayout>
+            isAdminLogin ? (
+              <AdminLayout>
+                <Dashboard />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
           }
         />
         <Route
           path="/admin/user"
           element={
-            <AdminLayout>
-              <h1>user</h1>
-            </AdminLayout>
+            isAdminLogin ? (
+              <AdminLayout>
+                <h1>user</h1>
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
           }
         />
+        <Route path="/admin/login" element={<LoginPage />} />
       </Routes>
     </Router>
   );

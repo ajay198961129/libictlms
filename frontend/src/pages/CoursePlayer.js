@@ -13,23 +13,30 @@ import {
 } from "@mui/material";
 import { MdExpandMore, MdPlayCircle } from "react-icons/md";
 import Error from "../components/error";
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 
 function CoursePlayer() {
   const [load, setLoad] = useState(false);
   const [courseData, setCourseData] = useState([]);
   const [currentVideoData, setCurrentVideoData] = useState([]);
+  const [documentPath, setDocumentPath] = useState([]);
   const { courseId } = useParams();
 
   const getSingleContent = async (id) => {
     setLoad(false);
-    console.log(id);
     try {
       const response = await axios.get(
         `${userApiUrl}/player-content/${academyId}/${id}`
       );
+
       if (response) {
         setLoad(true);
         setCurrentVideoData(response.data.singelContent);
+        setDocumentPath([
+          {
+            uri: `${baseUrl}/${response.data.singelContent.path}`,
+          },
+        ]);
       }
     } catch (error) {
       console.log(error);
@@ -42,8 +49,15 @@ function CoursePlayer() {
       const response = await axios.get(
         `${userApiUrl}/player/${academyId}/${courseId}`
       );
-      console.log(response.data);
       setCurrentVideoData(response.data[0]);
+
+      setDocumentPath([
+        {
+          uri: `${baseUrl}/${response.data[0].path}`,
+        },
+      ]);
+
+      console.log(response.data[0]);
 
       // Step 1: Group by chapter
       const transformedData = response.data.reduce((acc, item) => {
@@ -72,9 +86,6 @@ function CoursePlayer() {
       }, []);
 
       setCourseData(transformedData);
-      console.log(transformedData);
-
-      console.log(response.data);
 
       setLoad(true);
     } catch (error) {
@@ -86,22 +97,19 @@ function CoursePlayer() {
   useEffect(() => {
     fetchContent();
   }, []);
+
   return load ? (
     currentVideoData == null ? (
       <Error error="No Content Found!" />
     ) : (
       <div className="course-player">
         <div className="video-section">
-          {/* video player Section */}
           <div className="video-player">
-            <video width="100%" controls>
-              <source
-                src={`${baseUrl}/${currentVideoData.path.replace(/\\/g, "/")}`}
-                // src={video}
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            <DocViewer
+              documents={documentPath}
+              pluginRenderers={DocViewerRenderers}
+              style={{ height: 500, width: 900 }}
+            />
             <h3>{`${baseUrl}/${currentVideoData.path.replace(/\\/g, "/")}`}</h3>
             <h3>{`${currentVideoData.title}`}</h3>
           </div>
@@ -113,9 +121,6 @@ function CoursePlayer() {
             <Accordion key={index}>
               <AccordionSummary expandIcon={<MdExpandMore />}>
                 <Typography>{section.chapter}</Typography>
-                {/* <Typography style={{ marginLeft: "auto" }}>
-              {section.duration}
-            </Typography> */}
               </AccordionSummary>
               <AccordionDetails>
                 {section.contentData.map((data, index) => (
