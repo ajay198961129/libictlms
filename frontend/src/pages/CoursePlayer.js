@@ -110,7 +110,6 @@ function CoursePlayer() {
               pluginRenderers={DocViewerRenderers}
               style={{ height: 500, width: 900 }}
             />
-            <h3>{`${baseUrl}/${currentVideoData.path.replace(/\\/g, "/")}`}</h3>
             <h3>{`${currentVideoData.title}`}</h3>
           </div>
           <TabsComponent />
