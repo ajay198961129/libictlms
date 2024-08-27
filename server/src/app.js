@@ -33,12 +33,11 @@ app.get("/", (req, res) => {
   res.json("hello");
 });
 
-// app.get("/uploads/:filename", (req, res) => {
-//   const filename = req.params.filename;
-//   const filepath = path.join(__dirname, "uploads", filename);
-//   res.sendFile(filepath);
-// });
-
+app.get("/uploads/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const filepath = path.join(__dirname, "uploads", filename);
+  res.sendFile(filepath);
+});
 // Middleware
 app.use(express.json());
 
