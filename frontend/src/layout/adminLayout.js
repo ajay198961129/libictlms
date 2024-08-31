@@ -1,13 +1,13 @@
 import "../admin/assests/css/style.css";
+import "../admin/assests/css/bootstrap.min.css";
 import Sidebar from "../admin/components/AdminSideBar";
-import TopBar from "../admin/components/AdminTopBar";
 
 export default function AdminLayout({ children }) {
   return (
     <div class="admin-cus-container">
       <Sidebar />
       <div class="admin-main">
-        <TopBar />
+        {/* <TopBar /> */}
         <main>{children}</main>
       </div>
     </div>

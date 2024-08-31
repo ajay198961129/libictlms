@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div className="hero">
-      <h1>Learning to Change the World</h1>
+      <h2>Learning to Change the World</h2>
       <div className="color-underline"></div>
       <p>
         Free online courses for anyone making a difference, taught by leading

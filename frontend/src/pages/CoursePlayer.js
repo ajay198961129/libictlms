@@ -34,7 +34,7 @@ function CoursePlayer() {
         setCurrentVideoData(response.data.singelContent);
         setDocumentPath([
           {
-            uri: `${baseUrl}/${response.data.singelContent.path}`,
+            uri: `${baseUrl}/${response.data.singelContent.fileUrl}`,
           },
         ]);
       }
@@ -53,7 +53,7 @@ function CoursePlayer() {
 
       setDocumentPath([
         {
-          uri: `${baseUrl}/${response.data[0].path}`,
+          uri: `${baseUrl}/${response.data[0].fileUrl}`,
         },
       ]);
 

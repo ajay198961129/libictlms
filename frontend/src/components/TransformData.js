@@ -28,7 +28,7 @@ function TransformData({ data }) {
       {transformedData.map((chapter, index) => (
         <div className="course-content-wraper" key={index}>
           <div className="course-content-item">
-            <h3>{chapter.chapter}</h3>
+            <h5>{chapter.chapter}</h5>
             <ol>
               {chapter.contentData.map((content, idx) => (
                 <li key={idx}>{content.contentTitle}</li>

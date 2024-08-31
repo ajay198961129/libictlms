@@ -1,57 +1,57 @@
 footer {
-  background-color: #002f5f;
-  color: #fff;
-  padding: 40px 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  font-family: "Karla", sans-serif;
+  background-color: #002f5f !important;
+  color: #fff !important;
+  padding: 40px 30px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  font-family: "Karla", sans-serif !important;
 }
 
 .footer-right {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .footer-right-upper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
 }
 
 footer ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 18px !important;
 }
 
 footer ul li {
-  list-style-type: none;
-  padding: 10px 0px;
-  margin-left: 0px;
+  list-style-type: none !important;
+  padding: 10px 0px !important;
+  margin-left: 0px !important;
 }
 
 footer ul {
-  padding-left: 0px;
+  padding-left: 0px !important;
 }
 
 footer h3 {
-  font-size: 25px;
-  font-family: "Josefin Sans", sans-serif;
+  font-size: 25px !important;
+  font-family: "Josefin Sans", sans-serif !important;
 }
 
 .footer-logo p {
-  padding: 10px 30px 10px 10px;
+  padding: 10px 30px 10px 10px !important;
 }
 
 .quick-link {
-  width: 40%;
+  width: 40% !important;
 }
 
 .social-media {
-  margin-top: 20px;
+  margin-top: 20px !important;
 }
 
 .social-media a {
-  margin: 0px 10px;
+  margin: 0px 10px !important;
 }

@@ -13,16 +13,16 @@ export default function TopBar() {
         <ion-icon name="menu-outline"></ion-icon>
       </div>
 
-      <div className="admin-search">
+      {/* <div className="admin-search">
         <label>
           <input type="text" placeholder="Search here" />
           <ion-icon name="search-outline"></ion-icon>
         </label>
-      </div>
+      </div> */}
 
-      <div className="admin-user">
+      {/* <div className="admin-user">
         <img src="imgs/customer01.jpg" alt="" />
-      </div>
+      </div> */}
     </div>
   );
 }

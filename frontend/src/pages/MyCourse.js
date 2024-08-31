@@ -34,7 +34,7 @@ function MyCourse() {
     <div className="main-content">
       {load ? (
         <>
-          <h2>My Courses</h2>
+          <h3>My Courses</h3>
           {myCourseData.length == 0 ? (
             <Error error="No Courses Found!" />
           ) : (

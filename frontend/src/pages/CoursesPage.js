@@ -32,7 +32,7 @@ const CoursesPage = () => {
     <div className="course-wrapper">
       {load ? (
         <>
-          <h1>Viewing {courseData.length} Courses</h1>
+          <h2>Viewing {courseData.length} Courses</h2>
           <div className="courses-grid">
             {courseData.map((course, index) => (
               <CourseCard key={index} course={course} />

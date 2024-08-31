@@ -1,26 +1,26 @@
 .course-player {
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important;
 }
 
 .video-section {
-  flex: 3;
-  padding: 20px;
+  flex: 3 !important;
+  padding: 20px !important;
 }
 
 .course-content {
-  flex: 1;
-  max-width: 300px;
-  padding: 20px;
-  overflow-y: auto;
-  height: 100vh;
-  border-left: 1px solid #ddd;
+  flex: 1 !important;
+  max-width: 300px !important;
+  padding: 20px !important;
+  overflow-y: auto !important;
+  height: 100vh !important;
+  border-left: 1px solid #ddd !important;
 }
 
 .video-player {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .tabs {
-  margin-top: 20px;
+  margin-top: 20px !important;
 }

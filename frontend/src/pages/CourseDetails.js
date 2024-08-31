@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CourseDetails.css";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { academyId, userApiUrl } from "../api/config";
+import { academyId, baseUrl, userApiUrl } from "../api/config";
 import TransformData from "../components/TransformData";
 import Loader from "../components/Loader";
 
@@ -110,13 +110,16 @@ function CourseDetails() {
                   </div>
                 )}
               </div>
-              <img src={courseDetials.imageUrl} alt={courseDetials.title} />
+              <img
+                src={`${baseUrl}/${courseDetials.imageUrl}`}
+                alt={courseDetials.title}
+              />
             </div>
             <div className="course-details-body">
               <div className="course-details-body-left">
-                <h2>Description</h2>
+                <h5>Description</h5>
                 <p>{courseDetials.description}</p>
-                <h3>Course Content</h3>
+                <h5>Course Content</h5>
                 {contentData.length === 0 ? (
                   <div className="course-content-item">
                     <p>Content Not Available!</p>
@@ -124,9 +127,9 @@ function CourseDetails() {
                 ) : (
                   <TransformData data={contentData} />
                 )}
-                <h2>Who Should Take This Course?</h2>
+                <h5>Who Should Take This Course?</h5>
                 <p>{courseDetials.whyCourse}</p>
-                <h2>Certification</h2>
+                <h5>Certification</h5>
                 <p>{courseDetials.certification}</p>
               </div>
             </div>

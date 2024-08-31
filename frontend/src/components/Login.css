@@ -1,48 +1,48 @@
 .login {
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
+  padding: 20px !important;
+  max-width: 400px !important;
+  margin: 0 auto !important;
 }
 
 .signup-link {
   text-align: center !important;
-  text-decoration: none;
-  color: #1e1e1e;
-  font-size: 18px;
+  text-decoration: none !important;
+  color: #1e1e1e !important;
+  font-size: 18px !important;
 }
 
 .signup-link span {
-  color: #007bff;
+  color: #007bff !important;
 }
 
 .login h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  text-align: center !important;
+  margin-bottom: 20px !important;
 }
 
 .login form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 20px !important;
 }
 
 .login label {
-  margin-bottom: 5px;
+  margin-bottom: 5px !important;
 }
 
 .login input {
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 10px !important;
+  margin-bottom: 20px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 5px !important;
 }
 
 .login button {
-  padding: 10px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
+  padding: 10px !important;
+  border: none !important;
+  background-color: #007bff !important;
+  color: white !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  margin-bottom: 20px !important;
 }

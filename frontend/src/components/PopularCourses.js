@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const PopularCourses = (props) => (
   <div className="course-wrapper">
-    <h1>Popular Courses</h1>
+    <h2>Popular Courses</h2>
     <div className="courses-grid">
-      {props.data.slice(0, 6).map((course, index) => (
+      {props.data.slice(0, 9).map((course, index) => (
         <CourseCard key={index} course={course} />
       ))}
     </div>

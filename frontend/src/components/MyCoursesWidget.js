@@ -10,10 +10,10 @@ export default function MyCoursesWidget(props) {
         alt=""
       />
       <div className="mycourse-content">
-        <h3>{props.data.courseId.title}</h3>
+        <h5>{props.data.courseId.title}</h5>
         <div className="mycourse-footer">
           <div className="mycourse-footer-content">
-            <p>{props.data.courseId.instructor}</p>
+            <p>Instructor: {props.data.courseId.instructor}</p>
             <p>{props.data.courseId.category.name}</p>
           </div>
           <div className="mycourse-action">

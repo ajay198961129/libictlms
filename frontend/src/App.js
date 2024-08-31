@@ -16,12 +16,25 @@ import NotFound from "./pages/404";
 import Dashboard from "./admin/pages/Dashboard";
 import AdminLayout from "./layout/adminLayout";
 import LoginPage from "./admin/pages/Login";
+import Students from "./admin/pages/Students";
+import Courses from "./admin/pages/Courses";
+import Content from "./admin/pages/Content";
+import Assesments from "./admin/pages/Assesments";
+import Quiz from "./admin/pages/Quiz";
+import Institutes from "./admin/pages/Institutes";
+import AddCourse from "./admin/pages/AddCourse";
+import AddCategory from "./admin/pages/AddCategory";
+import AddChapter from "./admin/pages/AddChapter";
+import AddAssesment from "./admin/pages/AddAssesment";
+import AddQuiz from "./admin/pages/AddQuiz";
+import AddInstitute from "./admin/pages/AddInstitute";
+import AddContent from "./admin/pages/AddContent";
 
 function App() {
   const userId = localStorage.getItem("userId");
   const adminUserId = localStorage.getItem("adminUserId");
   const [isLogin, setIsLogin] = useState(false);
-  const [isAdminLogin, setAdminLogin] = useState(false);
+  const [isAdminLogin, setIsAdminLogin] = useState(false);
 
   const checkLogin = () => {
     if (userId != null) {
@@ -32,17 +45,17 @@ function App() {
   };
 
   const checkAdminLogin = () => {
-    if (userId != null) {
-      setAdminLogin(true);
+    if (adminUserId != null) {
+      setIsAdminLogin(true);
     } else {
-      setAdminLogin(false);
+      setIsAdminLogin(false);
     }
   };
 
   useEffect(() => {
     checkLogin();
     checkAdminLogin();
-  }, [userId, adminUserId]);
+  }, []);
 
   function WebsiteLayout({ children }) {
     return (
@@ -152,8 +165,21 @@ function App() {
           }
         />
         <Route path="*" element={<NotFound />} />
+        <Route path="/admin" element={<LoginPage />} />
         <Route
-          path="/admin"
+          path="/admin/students"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <Students />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/dashboard"
           element={
             isAdminLogin ? (
               <AdminLayout>
@@ -165,18 +191,149 @@ function App() {
           }
         />
         <Route
-          path="/admin/user"
+          path="/admin/courses"
           element={
             isAdminLogin ? (
               <AdminLayout>
-                <h1>user</h1>
+                <Courses />
               </AdminLayout>
             ) : (
               <LoginPage />
             )
           }
         />
-        <Route path="/admin/login" element={<LoginPage />} />
+        <Route
+          path="/admin/content"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <Content />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/assesment"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <Assesments />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/quizs"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <Quiz />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/institutes"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <Institutes />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/create-course"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <AddCourse />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/add-content"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <AddContent />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/create-category"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <AddCategory />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/create-chapter"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <AddChapter />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/create-assesment"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <AddAssesment />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/create-quiz"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <AddQuiz />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/create-institute"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <AddInstitute />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
       </Routes>
     </Router>
   );

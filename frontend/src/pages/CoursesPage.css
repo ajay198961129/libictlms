@@ -1,63 +1,63 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700 !important;1,100..700&family=Karla:ital,wght@0,200..800 !important;1,200..800&display=swap");
 
 .course-wrapper {
-  margin: 40px;
+  margin: 40px !important;
 }
 
-.course-wrapper h1 {
-  font-family: "Josefin Sans", sans-serif;
+.course-wrapper h2 {
+  font-family: "Josefin Sans", sans-serif !important;
 }
 
 .course-card {
-  margin: 10px;
-  width: 300px;
-  overflow: hidden;
+  margin: 10px !important;
+  width: 300px !important;
+  overflow: hidden !important;
 }
 
 .courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 20px !important;
 }
 
 .course-card img {
-  margin-bottom: 0px;
-  height: 200px;
-  width: 100%;
+  margin-bottom: 0px !important;
+  height: 200px !important;
+  width: 100% !important;
 }
 
 .course-info {
-  background-color: #002f5f;
-  color: #fff;
-  padding: 19px 13px 20px 13px;
-  position: relative;
-  top: 10;
-  transition-duration: 1s;
-  margin-top: -4px;
+  background-color: #002f5f !important;
+  color: #fff !important;
+  padding: 19px 13px 20px 13px !important;
+  position: relative !important;
+  top: 10 !important;
+  transition-duration: 1s !important;
+  margin-top: -4px !important;
 }
 
 .course-info h2 {
-  margin: 0px;
-  font-size: 21px;
+  margin: 0px !important;
+  font-size: 21px !important;
 }
 
 .course-footer a {
-  border: 1px solid #ff3d03;
-  color: #ff3d03;
-  text-decoration: none;
-  font-weight: 700;
-  padding: 10px 20px;
-  transition-duration: 0.5s;
+  border: 1px solid #ff3d03 !important;
+  color: #ff3d03 !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  padding: 10px 20px !important;
+  transition-duration: 0.5s !important;
 }
 
 .course-footer a:hover {
-  background-color: #ff3d03;
-  color: #fff;
+  background-color: #ff3d03 !important;
+  color: #fff !important;
 }
 
 .course-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 30px;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  margin-top: 30px !important;
 }
