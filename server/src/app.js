@@ -10,24 +10,24 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Connect to MongoDB
 connectDB();
 
-app.use(cors());
+// app.use(cors());
 
-// app.use(
-//   cors({
-//     origin: ["https://www.libict.org"],
-//     methods: ["POST", "GET"],
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: ["https://www.libict.org"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
-// app.options(
-//   "*",
-//   cors({
-//     origin: ["https://www.libict.org"],
-//     methods: ["POST", "GET"],
-//     credentials: true,
-//   })
-// );
+app.options(
+  "*",
+  cors({
+    origin: ["https://www.libict.org"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.json("hello");
