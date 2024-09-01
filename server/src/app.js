@@ -12,22 +12,42 @@ connectDB();
 
 // app.use(cors());
 
-app.use(
-  cors({
-    origin: ["https://www.libict.org"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["https://www.libict.org"],
+//     methods: ["POST", "GET"],
+//     credentials: true,
+//   })
+// );
 
-app.options(
-  "*",
-  cors({
-    origin: ["https://www.libict.org"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+// app.options(
+//   "*",
+//   cors({
+//     origin: ["https://www.libict.org"],
+//     methods: ["POST", "GET"],
+//     credentials: true,
+//   })
+// );
+
+const allowedOrigins = [
+  "https://www.libict.org",
+  "http://localhost:3000",
+  "https://libictlms-frontend.vercel.app",
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.json("hello");
