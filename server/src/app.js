@@ -51,10 +51,19 @@ connectDB();
 
 app.use(
   cors({
-    origin: "https://www.libict.org",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    origin: ["https://www.libict.org"],
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
     credentials: true,
     optionsSuccessStatus: 204,
+  })
+);
+
+app.options(
+  "*",
+  cors({
+    origin: ["https://www.libict.org"],
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+    credentials: true,
   })
 );
 
