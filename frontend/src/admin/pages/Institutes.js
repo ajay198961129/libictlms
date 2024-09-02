@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { adminApiUrl } from "../../api/config";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Institutes() {
   const [isLoading, setLoading] = useState(false);
@@ -8,7 +9,7 @@ export default function Institutes() {
   const getInstitutes = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${adminApiUrl}/contents`);
+      const response = await axios.get(`${adminApiUrl}/institutes`);
       setInstituteData(response.data);
       //   console.log(response.data);
     } catch (error) {
@@ -25,9 +26,9 @@ export default function Institutes() {
       <div className="admin-recentOrders">
         <div className="admin-cardHeader">
           <h4>LIBICT Bussiness Partner</h4>
-          <a href="add-institute" className="admin-btn">
+          <Link to="/admin/create-institute" className="admin-btn">
             Add Institute
-          </a>
+          </Link>
         </div>
 
         <table>

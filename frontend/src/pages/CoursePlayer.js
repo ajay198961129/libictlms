@@ -13,7 +13,8 @@ import {
 } from "@mui/material";
 import { MdExpandMore, MdPlayCircle } from "react-icons/md";
 import Error from "../components/error";
-import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+import pptFile from "../file/samplepptx.pptx";
+import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 function CoursePlayer() {
   const [load, setLoad] = useState(false);
@@ -21,6 +22,10 @@ function CoursePlayer() {
   const [currentVideoData, setCurrentVideoData] = useState([]);
   const [documentPath, setDocumentPath] = useState([]);
   const { courseId } = useParams();
+
+  const headers = {
+    "Content-Type": "application/json",
+  };
 
   const getSingleContent = async (id) => {
     setLoad(false);
@@ -34,7 +39,20 @@ function CoursePlayer() {
         setCurrentVideoData(response.data.singelContent);
         setDocumentPath([
           {
+            uri: "https://sample-videos.com/ppt/Sample-PPT-File-500kb.ppt",
+            fileType: "pptx",
+            fileName: "Sample-PPT-File-500kb.ppt",
+          },
+          {
             uri: `${baseUrl}/${response.data.singelContent.fileUrl}`,
+            fileType: response.data.singelContent.fileType,
+            fileName: `${response.data.singelContent.fileName}`,
+            // uri: pptFile,
+          },
+          {
+            uri: "https://scholar.harvard.edu/files/torman_personal/files/samplepptx.pptx",
+            fileType: "pptx",
+            fileName: "samplepptx.pptx",
           },
         ]);
       }
@@ -53,11 +71,24 @@ function CoursePlayer() {
 
       setDocumentPath([
         {
+          uri: "https://sample-videos.com/ppt/Sample-PPT-File-500kb.ppt",
+          fileType: "pptx",
+          fileName: "Sample-PPT-File-500kb.ppt",
+        },
+        {
           uri: `${baseUrl}/${response.data[0].fileUrl}`,
+          fileType: response.data[0].fileType,
+          fileName: `${response.data[0].fileName}`,
+          // uri: pptFile,
+        },
+        {
+          uri: "https://scholar.harvard.edu/files/torman_personal/files/samplepptx.pptx",
+          fileType: "pptx",
+          fileName: "samplepptx.pptx",
         },
       ]);
 
-      console.log(response.data[0]);
+      console.log(documentPath);
 
       // Step 1: Group by chapter
       const transformedData = response.data.reduce((acc, item) => {
@@ -98,6 +129,22 @@ function CoursePlayer() {
     fetchContent();
   }, []);
 
+  const docs = [
+    {
+      uri: "https://sample-videos.com/ppt/Sample-PPT-File-500kb.ppt",
+      fileType: "pptx",
+      fileName: "Sample-PPT-File-500kb.ppt",
+    },
+    {
+      uri: require("../file/31203d11-2326-49dd-9ba3-6c8ce761349e.pptx"),
+      fileType: "pptx",
+      fileName: "31203d11-2326-49dd-9ba3-6c8ce761349e.pptx",
+    },
+  ];
+  // const [error, setError] = useState(null);
+
+  console.log(documentPath);
+
   return load ? (
     currentVideoData == null ? (
       <Error error="No Content Found!" />
@@ -106,9 +153,11 @@ function CoursePlayer() {
         <div className="video-section">
           <div className="video-player">
             <DocViewer
+              style={{ height: "400px" }}
               documents={documentPath}
               pluginRenderers={DocViewerRenderers}
-              style={{ height: 500, width: 900 }}
+              prefetchMethod="GET"
+              requestHeaders={headers}
             />
             <h3>{`${currentVideoData.title}`}</h3>
           </div>

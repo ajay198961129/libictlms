@@ -37,6 +37,8 @@ const contentSchema = new Schema(
     chapter: { type: mongoose.Schema.Types.ObjectId, ref: "Chapter" },
     fileUrl: { type: String, required: true },
     fileName: { type: String, required: true },
+    fileType: { type: String, required: true },
+    fileSize: { type: String, required: true },
   },
   { timestamps: true }
 );

@@ -24,6 +24,21 @@ export default function Content() {
     setLoading(false);
   };
 
+  const deleteContent = async (id) => {
+    setLoading(true);
+
+    try {
+      const response = await axios.delete(
+        `${adminApiUrl}/delete-content/${id}`
+      );
+      console.log(response.data);
+      getContent();
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     getContent();
   }, []);
@@ -66,11 +81,14 @@ export default function Content() {
                         </span>
                       </a>
                       &nbsp; &nbsp;
-                      <a href="#" style={{ textDecoration: "none" }}>
+                      <div
+                        style={{ display: "inline-block", cursor: "pointer" }}
+                        onClick={(e) => deleteContent(data._id)}
+                      >
                         <span className="admin-status admin-return">
                           Delete
                         </span>
-                      </a>
+                      </div>
                       &nbsp;
                     </td>
                   </tr>

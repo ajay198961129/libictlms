@@ -105,6 +105,7 @@ export default function AddCourse() {
                       aria-label="Default select example"
                       required
                     >
+                      <option value={""}>Select Category</option>
                       {categoryData.map((data) => (
                         <option key={data._id} value={data._id}>
                           {data.name}

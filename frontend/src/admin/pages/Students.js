@@ -35,9 +35,6 @@ export default function Students() {
           <div className="admin-recentOrders">
             <div className="admin-cardHeader">
               <h4>LIBICT Students</h4>
-              <a href="add-student" className="admin-btn">
-                Add New
-              </a>
             </div>
 
             <table>

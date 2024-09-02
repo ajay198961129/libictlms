@@ -55,8 +55,13 @@ body {
 }
 
 .admin-navigation ul li:hover,
-.admin-navigation ul li.visited {
+.admin-navigation ul li.active-menu {
   background-color: var(--white);
+}
+
+.admin-navigation ul li:hover a,
+.admin-navigation ul li.active-menu a {
+  color: var(--blue);
 }
 
 .admin-navigation ul li:nth-child(1) {
@@ -71,10 +76,6 @@ body {
   display: flex;
   text-decoration: none;
   color: var(--white);
-}
-.admin-navigation ul li:hover a,
-.admin-navigation ul li.visited a {
-  color: var(--blue);
 }
 
 .admin-navigation ul li a .admin-icon {
@@ -103,7 +104,7 @@ body {
 
 /* --------- curve outside ---------- */
 .admin-navigation ul li:hover a::before,
-.admin-navigation ul li.visited a::before {
+.admin-navigation ul li.active-menu a::before {
   content: "";
   position: absolute;
   right: 0;
@@ -116,7 +117,7 @@ body {
   pointer-events: none;
 }
 .admin-navigation ul li:hover a::after,
-.admin-navigation ul li.visited a::after {
+.admin-navigation ul li.active-menu a::after {
   content: "";
   position: absolute;
   right: 0;

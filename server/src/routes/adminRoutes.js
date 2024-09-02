@@ -1,35 +1,25 @@
 const express = require("express");
-const {
-  adminAuthUser,
-  registerUser,
-  getUsers,
-  getCategory,
-  getChapter,
-  getContent,
-  getCourses,
-  getInstitutes,
-  addInstitute,
-  addChapter,
-  addCategory,
-  addCourse,
-} = require("../controllers/adminController");
 
 const courseController = require("../controllers/adminController");
 
 const adminRoutes = express.Router();
 
-adminRoutes.post("/login", adminAuthUser);
-adminRoutes.post("/register", registerUser);
-adminRoutes.post("/users", getUsers);
-adminRoutes.post("/categories", getCategory);
-adminRoutes.post("/chapters", getChapter);
-adminRoutes.post("/contents", getContent);
-adminRoutes.post("/courses", getCourses);
-adminRoutes.get("/institutes", getInstitutes);
-adminRoutes.post("/add-institute", addInstitute);
-adminRoutes.post("/add-chapter", addChapter);
-adminRoutes.post("/add-category", addCategory);
+adminRoutes.post("/login", courseController.adminAuthUser);
+adminRoutes.post("/register", courseController.registerUser);
+adminRoutes.post("/users", courseController.getUsers);
+adminRoutes.post("/categories", courseController.getCategory);
+adminRoutes.post("/chapters", courseController.getChapter);
+adminRoutes.post("/contents", courseController.getContent);
+adminRoutes.post("/courses", courseController.getCourses);
+adminRoutes.get("/institutes", courseController.getInstitutes);
+adminRoutes.post("/add-institute", courseController.addInstitute);
+adminRoutes.post("/add-chapter", courseController.addChapter);
+adminRoutes.post("/add-category", courseController.addCategory);
 adminRoutes.post("/add-course", courseController.addCourse);
 adminRoutes.post("/add-content", courseController.addContent);
+adminRoutes.delete("/delete-category/:id", courseController.deleteCategory);
+adminRoutes.delete("/delete-chapter/:id", courseController.deleteChapter);
+adminRoutes.delete("/delete-course/:id", courseController.deleteCourse);
+adminRoutes.delete("/delete-content/:id", courseController.deleteContent);
 
 module.exports = adminRoutes;

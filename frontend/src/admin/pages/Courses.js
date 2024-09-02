@@ -23,6 +23,19 @@ export default function Courses() {
     setLoading(false);
   };
 
+  const deleteCourse = async (id) => {
+    setLoading(true);
+
+    try {
+      const response = await axios.delete(`${adminApiUrl}/delete-course/${id}`);
+      console.log(response.data);
+      getCourses();
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     getCourses();
   }, []);
@@ -66,17 +79,20 @@ export default function Courses() {
                         </span>
                       </a>
                       &nbsp;&nbsp;
-                      <a href="#" style={{ textDecoration: "none" }}>
+                      <div
+                        style={{ display: "inline-block", cursor: "pointer" }}
+                        onClick={() => deleteCourse(data._id)}
+                      >
                         <span className="admin-status admin-return">
                           Delete
                         </span>
-                      </a>
+                      </div>
                       &nbsp;&nbsp;
-                      <a href="#" style={{ textDecoration: "none" }}>
+                      {/* <a href="#" style={{ textDecoration: "none" }}>
                         <span className="admin-status admin-pending">
                           Details
                         </span>
-                      </a>
+                      </a> */}
                     </td>
                   </tr>
                 ))}

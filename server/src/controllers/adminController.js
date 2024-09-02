@@ -187,7 +187,72 @@ const addCategory = async (req, res) => {
   }
 };
 
-const upload = multer({ dest: "src/uploads/" });
+const deleteCategory = async (req, res) => {
+  const { id } = req.params;
+
+  const category = await Category.findByIdAndDelete(id);
+
+  if (category) {
+    res.status(201).json({
+      message: "Category Successfully Deleted!",
+    });
+  } else {
+    res.status(400).json({ message: "Invalid Category data" });
+  }
+};
+
+const deleteChapter = async (req, res) => {
+  const { id } = req.params;
+
+  const chapter = await Chapter.findByIdAndDelete(id);
+
+  if (chapter) {
+    res.status(201).json({
+      message: "Chapter Successfully Deleted!",
+    });
+  } else {
+    res.status(400).json({ message: "Invalid Chapter data" });
+  }
+};
+
+const deleteCourse = async (req, res) => {
+  const { id } = req.params;
+
+  const course = await Course.findByIdAndDelete(id);
+
+  if (course) {
+    res.status(201).json({
+      message: "Course Successfully Deleted!",
+    });
+  } else {
+    res.status(400).json({ message: "Invalid Course data" });
+  }
+};
+
+const deleteContent = async (req, res) => {
+  const { id } = req.params;
+
+  const content = await Content.findByIdAndDelete(id);
+
+  if (content) {
+    res.status(201).json({
+      message: "Content Successfully Deleted!",
+    });
+  } else {
+    res.status(400).json({ message: "Invalid Content data" });
+  }
+};
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads/"); // Save files to the "public/uploads" directory
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname); // Generate a unique filename
+  },
+});
+
+const upload = multer({ storage });
 
 const addCourse = async (req, res) => {
   const {
@@ -245,8 +310,10 @@ const addContent = async (req, res) => {
     academyId,
     course,
     chapter,
-    fileUrl: `uploads/${contentFile.filename}`,
+    fileUrl: `${contentFile.destination}${contentFile.filename}`,
     fileName: contentFile.filename,
+    fileType: "pptx",
+    fileSize: contentFile.size,
   });
 
   if (content) {
@@ -272,4 +339,8 @@ module.exports = {
   addCategory,
   addCourse: [upload.single("courseImage"), addCourse],
   addContent: [upload.single("contentFile"), addContent],
+  deleteCategory,
+  deleteChapter,
+  deleteCourse,
+  deleteContent,
 };

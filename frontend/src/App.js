@@ -29,6 +29,8 @@ import AddAssesment from "./admin/pages/AddAssesment";
 import AddQuiz from "./admin/pages/AddQuiz";
 import AddInstitute from "./admin/pages/AddInstitute";
 import AddContent from "./admin/pages/AddContent";
+import Category from "./admin/pages/Category";
+import Chapter from "./admin/pages/Chapter";
 
 function App() {
   const userId = localStorage.getItem("userId");
@@ -208,6 +210,30 @@ function App() {
             isAdminLogin ? (
               <AdminLayout>
                 <Content />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/category"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <Category />
+              </AdminLayout>
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
+        <Route
+          path="/admin/chapter"
+          element={
+            isAdminLogin ? (
+              <AdminLayout>
+                <Chapter />
               </AdminLayout>
             ) : (
               <LoginPage />

@@ -76,11 +76,8 @@ export default function AddContent() {
             <div className="admin-cardHeader">
               <h2>Add Course Content</h2>
               <span>
-                <Link to="/admin/content" className="admin-btn">
+                <Link to="/admin/content" className="admin-btn btn">
                   Content List
-                </Link>
-                <Link to="/admin/create-content" className="admin-btn">
-                  Add Chapter
                 </Link>
               </span>
             </div>
